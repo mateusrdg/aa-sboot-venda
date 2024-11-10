@@ -1,7 +1,7 @@
 {
     "containerDefinitions": [
         {
-            "name": "veiculos/venda",
+            "name": "veiculos-venda",
             "image": "211125787133.dkr.ecr.us-east-2.amazonaws.com/veiculos/venda",
             "cpu": 0,
             "portMappings": [
