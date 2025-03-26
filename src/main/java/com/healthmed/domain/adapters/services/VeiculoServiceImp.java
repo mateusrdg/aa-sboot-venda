@@ -5,12 +5,14 @@ import com.healthmed.domain.Veiculo;
 import com.healthmed.domain.dtos.veiculo.VeiculoDTO;
 import com.healthmed.domain.ports.interfaces.VeiculoServicePort;
 import com.healthmed.domain.ports.repositories.VeiculoRepositoryPort;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Slf4j
 public class VeiculoServiceImp implements VeiculoServicePort {
 
     private final VeiculoRepositoryPort repositoryPort;
@@ -23,6 +25,7 @@ public class VeiculoServiceImp implements VeiculoServicePort {
     public VeiculoDTO criaVeiculo(VeiculoDTO veiculoDto) {
         Veiculo veiculo = new Veiculo(veiculoDto);
         Veiculo savedVeiculo = repositoryPort.save(veiculo);
+        log.info("criacao de registro de veiculo realizada com sucesso!");
         return savedVeiculo.toDto();
     }
 
@@ -41,6 +44,7 @@ public class VeiculoServiceImp implements VeiculoServicePort {
         veiculo.setPreco(veiculoDto.getPreco());
 
         Veiculo updatedVeiculo = repositoryPort.save(veiculo);
+        log.info("atualizacao realizada com sucesso!");
         return updatedVeiculo.toDto();
     }
 
@@ -74,6 +78,7 @@ public class VeiculoServiceImp implements VeiculoServicePort {
 
         veiculo.setVendido(true);
         Veiculo soldVeiculo = repositoryPort.save(veiculo);
+        log.info("compra realizada com sucesso!");
         return soldVeiculo.toDto();
     }
 
